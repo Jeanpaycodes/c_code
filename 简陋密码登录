@@ -1,0 +1,45 @@
+//简陋版密码登录
+#include<stdio.h>
+#include<string.h>
+#include <stdlib.h>
+
+
+int main()
+{
+    int i = 0;
+    int j = 0;
+    int ch = 0;
+    int ch1 = 0;
+    char passward[20] = {0};
+    for(j=0;j<3;j++)
+    {
+        printf("请输入密码:>");
+        scanf("%s",passward);
+    while((ch = getchar())!='\n')
+    {
+        ;
+    }
+    printf("请确认(Y/N):>");
+    i = getchar();
+    if (i=='Y')
+    {
+        printf("确认成功\n");
+    }
+    else
+    {
+        printf("确认失败\n");
+    }
+    if(strcmp(passward,"123456abcd")==0)
+    {
+        printf("登录成功\n");
+        break;
+    }
+    else
+    {
+        printf("密码错误\n");
+    }
+    }
+    if(j==3)
+        printf("三次密码错误\n");
+    return 0;
+}
