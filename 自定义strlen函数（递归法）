@@ -1,0 +1,18 @@
+//自定义strlen函数（递归法）
+#include <stdio.h>
+
+int my_strlen2(char* str)
+{
+    if(*str!='\0')
+        return 1+my_strlen2(str+1);
+    else
+        return 0;
+}
+
+int main()
+{
+    char arr[] = "bit";
+    int len = my_strlen2(arr);
+    printf("len = %d\n",len);
+    return 0;
+}
