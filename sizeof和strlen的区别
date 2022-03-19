@@ -1,0 +1,18 @@
+//sizeof（）和strlen（）的区别
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char arr1[] = "abc";
+    char arr2[] = {'a','b','c'};
+    printf("%d\n",sizeof(arr1));
+    printf("%d\n",sizeof(arr2));
+    printf("%d\n",strlen(arr1));
+    printf("%d\n",strlen(arr2));
+    return 0;
+}
+
+//1.strlen和sizeof没有什么关联
+//2.strlen是求字符串长度的--只能针对字符串求长度--是库函数（第一种定义方法自带\0 而第二种没有）
+//3.sizeof是计算变量、数组、类型大小的操作符--单位是字节（计算占领空间的大小，\0也占空间）
