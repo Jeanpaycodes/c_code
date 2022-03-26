@@ -1,6 +1,6 @@
 //求二进制（补码）中有多少个1（模2除2法）
 #include <stdio.h>
-int count_bit_one(unsigned int n)
+int count_bit_one(unsigned int n)    //利用无符号类型以应对负数
 {
     int count = 0;
     while(n)
