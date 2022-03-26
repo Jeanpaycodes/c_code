@@ -1,0 +1,16 @@
+//对于sizeof函数的一些细节
+#include <stdio.h>
+int i; //全局变量---不初始化---默认是0
+int main()
+{
+    i--;
+    if(i>sizeof(i))   //sizeof（）计算变量/类型所占内存的大小>=0 无符号数
+    {
+        printf(">\n");
+    }
+    else
+    {
+        printf("<\n");
+    }
+    return 0;
+}
