@@ -1,0 +1,25 @@
+//利用typedef定义结构体变量
+#include <stdio.h>
+typedef struct Stu
+{
+    //成员变量
+    char name[20];
+    short age;
+    char tele[12];
+    char sex[5];
+}Stu;   //利用Stu代替struct Stu；若没有typedef，则为定义其他结构体变量
+
+void print1(Stu* ps)
+{
+    printf("name:%s\n",ps->name);
+    printf("age:%d\n",ps->age);
+    printf("tele:%s\n",ps->tele);
+    printf("sex:%s\n",ps->sex);
+}
+
+int main()
+{
+    Stu s = {"李四",40,"15598886688","男"};
+    print1(&s);
+    return 0;
+}
