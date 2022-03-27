@@ -105,6 +105,11 @@ void FindMine(char mine[ROWS][COLS],char show[ROWS][COLS],int row,int col)
             printf("输入坐标非法，请重新输入！\n");
         }
     }
+    if(win==row*col-EASY_COUNT)
+    {
+          printf("恭喜你，排雷成功"\n);
+          DisplayBoard(mine,row,col);
+    }
 }
 
 
