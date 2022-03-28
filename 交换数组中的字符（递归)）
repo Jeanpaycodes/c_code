@@ -1,0 +1,22 @@
+//交换数组中的字符
+#include <stdio.h>
+#include <string.h>
+void reverse_string(char arr[])
+{
+    char tem = arr[0];
+    int len = strlen(arr);
+    arr[0] = arr[len-1];
+    arr[len-1] = '\0';
+    if(strlen(arr+1)>=2)      ////当字符串中间有0个或者1个字符时，就不用交换了，分别对应偶数和奇数的情况
+        reverse_string(arr+1);   ///arr代表数组的首元素地址，+1表示找到下一个元素
+    arr[len-1] = tem;
+}
+
+
+int main()
+{
+    char arr[] = "abcdef";
+    reverse_string(arr);
+    printf("%s\n",arr);
+    return 0;
+}
