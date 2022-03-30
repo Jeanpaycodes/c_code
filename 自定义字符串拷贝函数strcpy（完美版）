@@ -1,0 +1,25 @@
+//自定义字符串拷贝函数strcpy（完美版）
+#include <stdio.h>
+#include <assert.h>
+
+char* my_strcpy(char* dest,char*src)
+{
+    char* ret = dest;
+    assert(dest!=NULL);  //断言
+    assert(src!=NULL); //断言
+    //把src指向的字符串拷贝到dest指向的空间，包含'\0'字符
+    while(*dest++=*src++)   //步骤1)*dest=*src  2)src++ dest++  即先解引用 再地址自加 当到\0时 自动不满足while函数条件
+    {
+        ;
+    }
+    return ret;
+}
+
+
+int main()
+{
+    char arr1[] = "########";
+    char arr2[] = "bit";
+    printf("%s\n",my_strcpy(arr1,arr2));
+    return 0;
+}
