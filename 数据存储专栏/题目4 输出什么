@@ -1,0 +1,14 @@
+///题目4 输出什么
+#include <stdio.h>
+int main()
+{
+    unsigned int i;
+    for(i=9;i>=0;i--)
+    {
+        printf("%u\n",i);
+    }
+    return 0;
+}
+
+///注意i是一个无符号数永远大于等于0 所以永远满足循环的条件 是一个死循环
+///对于unsigned int 取值范围是0~2^32 所以0-1=2^32
