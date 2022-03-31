@@ -1,0 +1,17 @@
+//const放在指针变量左右的区别
+#include <stdio.h>
+int main()
+{
+    const int num = 10;
+    int n = 100;
+    int i = 20;
+    //const放在指针变量的左边时，修饰的是*p，也就是说不能通过p来改变*p（num）的值
+    //const放在指针变量的右边时，修饰的是指针变量p本身，p不能改变了，即不能改变地址了
+    const int* pn = &n;
+    //printf("%d\n",*pn=20);(不可行)
+    printf("%p\n",++pn);   //(可行)
+    int* const p = &i;
+    printf("%d\n",*p=50);  //(可行)
+    //printf("%p\n",++p);   (不可行)
+    return 0;
+}
