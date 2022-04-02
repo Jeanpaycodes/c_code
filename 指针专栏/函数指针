@@ -1,0 +1,21 @@
+///函数指针
+#include <stdio.h>
+
+int Add(int x,int y)
+{
+    int z = 0;
+    z = x+y;
+    return z;
+}
+
+
+int main()
+{
+    int a = 10;
+    int b = 20;
+    int(*pa)(int,int) = Add;
+    printf("%d\n",(*pa)(a,b));    ///注意三种写法所表达的意思相同 所以打印的结果一样
+    printf("%d\n",pa(a,b));       ///对于函数来说 &函数名和函数名都是函数的地址 所以是否解引用结果一样
+    printf("%d\n",Add(a,b));
+    return 0;
+}
