@@ -1,0 +1,77 @@
+///函数指针（精简版计算器）
+#include <stdio.h>
+
+int ADD(int x,int y)
+{
+    return x+y;
+}
+
+int SUB(int x,int y)
+{
+    return x-y;
+}
+
+int MUL(int x,int y)
+{
+    return x*y;
+}
+
+int DIV(int x,int y)
+{
+    return x/y;
+}
+
+void menu()
+{
+    printf("**************************\n");
+    printf("** 1.add        2.sub ****\n");
+    printf("** 3.mul        4.div ****\n");
+    printf("**       0.exit       ****\n");
+    printf("**************************\n");
+}
+
+
+void Calc(int(*pf)(int,int))
+{
+    int x = 0;
+    int y = 0;
+    printf("请输入两个操作数:>");
+    scanf("%d%d",&x,&y);
+    printf("%d\n",pf(x,y));
+}
+
+
+int main()
+{
+    int input  = 0;
+    do
+    {
+        menu();
+        printf("请选择:>");
+        scanf("%d",&input);
+
+        switch(input)
+        {
+        case 1:
+            Calc(ADD);
+            break;
+        case 2:
+            Calc(SUB);
+            break;
+        case 3:
+            Calc(MUL);
+            break;
+        case 4:
+            Calc(DIV);
+            break;
+        case 0:
+            printf("退出\n");
+            break;
+        default:
+            printf("选择错误\n");
+            break;
+        }
+    }while(input);
+    return 0;
+}
+
