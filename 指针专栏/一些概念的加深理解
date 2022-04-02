@@ -1,0 +1,18 @@
+///一些概念的加深理解
+int main()
+{
+    ///指针数组                    int* arr[10];
+    ///数组指针                    int (*pa)[10];
+    ///函数指针                    int (*padd)(int,int);
+    ///函数指针的数组              int(*parr[5])(int,int);
+    ///指向函数指针数组的指针      int(*(*ppar)[5])(int,int);
+    
+    ///eg: 1)  (*(void(*)())0)()-----可以拆分成void(*)()  () 即把0强制转换成函数指针类型 调用0地址处的该函数
+    ///    2)  void(*signal(int,void(*)(int)))(int)
+    ///        signal是一个函数声明
+    ///        signal函数的参数有2个 第一个是int 第二个是函数指针 该函数指针指向的函数的参数是int 返回类型是void
+    ///        signal函数的返回类型也是一个函数指针 该函数指针指向的函数的参数是int 返回类型是void
+    ///        可以改写成如下两句:
+    ///        typedef void(*pfun_t)(int);   外层
+    ///        pfun_t signal(int,pfun_t);    内层
+}
