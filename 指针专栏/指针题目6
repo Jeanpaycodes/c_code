@@ -1,0 +1,10 @@
+///指针题目六
+#include <stdio.h>
+int main()
+{
+    char* a[] = {"work","at","alibaba"};    ///做这种类型的题目 得先画出存储图 指针指向
+    char** pa = a;
+    pa++;
+    printf("%s\n",*pa);
+    return 0;
+}
