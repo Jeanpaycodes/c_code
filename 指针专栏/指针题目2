@@ -1,0 +1,22 @@
+///指针题目二
+#include <stdio.h>
+struct Test
+{
+    int Num;
+    char* pcName;
+    short sDate;
+    char cha[2];
+    short sBa[4];
+}*p;   ///结构体指针
+
+///假设p 的值为0x100000 如下表达式的值分别为多少
+///已知 结构体Test类型的变量大小是20个字节
+
+int main()
+{
+    p = (struct Test*)0x100000;
+    printf("%p\n",p+0x1);                   ///Test变量大小是20个字节 所以p+1就是0x00100014
+    printf("%p\n",(unsigned long)p+0x1);    ///0x100000转化为unsigned long为1048576 +1就是1048577 即0x00100001
+    printf("%p\n",(unsigned int*)p+0x1);    ///转化为unsigned int* 每加1 跳过4个字节 即0x00100004
+    return 0;
+}
