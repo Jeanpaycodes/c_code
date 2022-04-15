@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+    char arr[] = {'a','b','c','d','e','f'};
+
+    printf("%d\n",strlen(arr));        ///随机值 这种定义方法不包含\0
+    printf("%d\n",strlen(arr+0));      ///随机值
+    //printf("%d\n",strlen(*arr));     ///err 字符a传给strlen
+    //printf("%d\n",strlen(arr[1]));   ///err 字符b传给strlen
+    printf("%d\n",strlen(&arr));       ///随机值
+    printf("%d\n",strlen(&arr+1));     ///随机值-6
+    printf("%d\n",strlen(&arr[0]+1));  ///随机值-1
+
+
+    char arr1[] = "abcdef";
+
+    printf("%d\n",strlen(arr1));           ///6 这种定义方法自带\0
+    printf("%d\n",strlen(arr1+0));         ///6
+    //printf("%d\n",strlen(*arr1));          ///err 字符a传给strlen
+    //printf("%d\n",strlen(arr1[1]));        ///err 字符b传给strlen
+    printf("%d\n",strlen(&arr1+1));        ///随机值 因为不知道有无\0
+    printf("%d\n",strlen(&arr1[0]+1));     ///5
+
+    ///字符串常量
+    char* p = "abcdef";
+
+    printf("%d\n",strlen(p));              ///6
+    printf("%d\n",strlen(p+1));            ///5
+    //printf("%d\n",strlen(*p));             ///err 字符a传给strlen
+    //printf("%d\n",strlen(p[0]));           ///err 字符a传给strlen
+    printf("%d\n",strlen(&p));             ///随机值
+    printf("%d\n",strlen(&p+1));           ///随机值
+    printf("%d\n",strlen(&p[0]+1));        ///5
+    return 0;
+}
