@@ -1,0 +1,72 @@
+int main()
+{
+    /* **************
+       1.数组名是首元素的地址
+        1）sizeof（数组名） 表示的是整个数组
+        2）&数组名 表示的是整个数组
+    */
+    int a[] = {1,2,3,4};
+    printf("%d\n",sizeof(a));       ///sizeof(数组名) 计算的是数组总大小 单位是字节
+    printf("%d\n",sizeof(a+0));     ///数组名表示的是首元素地址 a+0还是首元素地址 地址的大小固定
+    printf("%d\n",sizeof(*a));      ///数组名表示的是首元素地址 *a就是首元素
+    printf("%d\n",sizeof(a+1));     ///数组名表示的是首元素地址 a+1是第二个元素的地址 地址的大小固定
+    printf("%d\n",sizeof(a[1]));    ///第二个元素的大小
+    printf("%d\n",sizeof(&a));      ///&a取出的是整个数组的地址 数组的地址也是地址 地址的大小固定
+    printf("%d\n",sizeof(*&a));     ///相当于第一条 计算的是数组总大小
+    printf("%d\n",sizeof(&a+1));    ///&a是整个数组的地址 &a+1是跳过真个数组的地址 仍然是地址 地址的大小固定
+    printf("%d\n",sizeof(&a[0]));   ///首元素的地址 地址的大小固定
+    printf("%d\n",sizeof(&a[0]+1)); ///第二个元素的地址
+
+    ///字符数组
+    char arr[] = {'a','b','c','d','e','f'};
+    printf("%d\n",sizeof(arr));        ///sizeof计算的是整个数组的大小 注意与"abcdef"的区别
+    printf("%d\n",sizeof(arr+0));      ///arr是首元素的地址 arr+0还是首元素的地址
+    printf("%d\n",sizeof(*arr));       ///arr是首元素的地址 *arr就是首元素 即首元素的大小
+    printf("%d\n",sizeof(arr[1]));     ///与上一条一样
+    printf("%d\n",sizeof(&arr));       ///&arr是整个数组的地址 仍然是地址 地址大小固定
+    printf("%d\n",sizeof(&arr+1));     ///&arr+1是跳过整个数组的地址 仍然是地址 地址大小固定
+    printf("%d\n",sizeof(&arr[0]+1));  ///第二个元素的地址
+
+
+    char arr1[] = "abcdef";
+    printf("%d\n",sizeof(arr1));       ///sizeof计算的是整个数组的大小 但是这里自动包含\0
+    printf("%d\n",sizeof(arr1+0));     ///arr1是首元素的地址 arr1+0还是首元素的地址
+    printf("%d\n",sizeof(*arr1));      ///arr1是首元素的地址 *arr1就是首元素 即首元素的大小
+    printf("%d\n",sizeof(arr1[1]));    ///与上一条一样
+    printf("%d\n",sizeof(&arr1));      ///&arr1是整个数组的地址 仍然是地址 地址大小固定
+    printf("%d\n",sizeof(&arr1+1));    ///&arr1+1是跳过整个数组的地址 仍然是地址 地址大小固定
+    printf("%d\n",sizeof(&arr1[0]+1)); ///第二个元素的地址
+
+
+    ///字符串常量  把字符a的地址赋予char*
+    char* p = "abcdef";
+    printf("%d\n",sizeof(p));          ///计算指针变量p的大小 即地址的大小
+    printf("%d\n",sizeof(p+1));        ///p+1得到的是字符b的地址 仍然是地址的大小
+    printf("%d\n",sizeof(*p));         ///p是字符a的地址 *p就是字符a 即字符a的大小
+    printf("%d\n",sizeof(p[0]));       ///即字符a 与上一条一样
+    printf("%d\n",sizeof(&p));         ///整个常量字符串的地址 仍然是地址
+    printf("%d\n",sizeof(&p+1));       ///地址
+    printf("%d\n",sizeof(&p[0]+1));    ///字符b的地址
+
+
+    ///二维数组
+    int b[3][4] = {0};
+    printf("%d\n",sizeof(b));          ///sizeof(数组名) 求的是整个数组的大小
+    printf("%d\n",sizeof(b[0][0]));    ///整个数组第一个元素的大小
+    printf("%d\n",sizeof(b[0]));       ///相当于第一行作为一维数组的数组名 把数组名单独放在sizeof内 计算的是整个数组的大小
+                                       ///在这里即第一行的大小
+    printf("%d\n",sizeof(b[0]+1));     ///b[0]是第一行的数组名 数组名是首元素的地址 即第一行第一个元素的地址 +1就是第一行
+                                       ///第二个元素的地址 仍然是地址  地址的大小不变
+    printf("%d\n",sizeof(*b[0]+1));    ///第一行第二个元素的大小
+    printf("%d\n",sizeof(b+1));        ///数组名就是首元素的地址 对于二维数组 首元素就是第一行 b就是第一行的地址
+                                       ///+1就变成第二行的地址
+    printf("%d\n",sizeof(*(b+1)));      ///计算第二行的大小
+    printf("%d\n",sizeof(&b[0]+1));     ///&b[0]是第一行的地址 +1就是第二行的地址 地址的大小不变
+    printf("%d\n",sizeof(*(&b[0]+1)));  ///计算第二行的大小
+    printf("%d\n",sizeof(*b));         ///计算第一行的大小
+    printf("%d\n",sizeof(b[3]));       ///越界访问 仍然是16
+
+    printf("%p\n",b[0]+1);
+    printf("%p\n",b+1);
+    return 0;
+}
